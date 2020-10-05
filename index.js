@@ -51,7 +51,13 @@ client.connect(err => {
                 res.send(documents)
             })
     })
-
+    app.get('/myActivities', (req, res) => {
+        const activity = req.body;
+        collectionWorker.find({})
+            .toArray((err, documents) => {
+                res.send(documents)
+            })
+    })
     app.delete('/delete/:id', (req, res) => {
         collectionWorker.deleteOne({ _id: ObjectId(req.params.id) })
             .then(result => {
